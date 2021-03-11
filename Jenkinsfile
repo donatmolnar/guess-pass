@@ -11,9 +11,8 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 echo 'Installing dependencies'
-                sh ```go version
-go get -d ./...
-```
+                sh 'go version'
+                sh 'go get -d ./...'
             }
         }
         stage('Building the app') {
@@ -25,9 +24,7 @@ go get -d ./...
         stage('Building Docker image') {
             steps {
                 echo 'Compiling and building'
-                sh ```
-docker build -t donatmolnar/guesspass:1.0.0 .
-                ```
+                sh 'docker build -t donatmolnar/guesspass:1.0.0 .'
             }
         }
         stage('Pushing image to dockerhub') {
@@ -36,12 +33,10 @@ docker build -t donatmolnar/guesspass:1.0.0 .
             }
             steps {
                 echo 'Pushing to dockerhub'
-                sh ```
-sudo docker login
-${dockerhub_USR} 
-${dockerhub_PSW}
-sudo docker push donatmolnar/guesspass:1.0.0
-                ```
+                sh 'sudo docker login'
+                sh '${dockerhub_USR}'
+                sh '${dockerhub_PSW}'
+                sh 'sudo docker push donatmolnar/guesspass:1.0.0'
             }
         }
     }
