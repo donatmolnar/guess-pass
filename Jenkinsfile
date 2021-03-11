@@ -14,6 +14,9 @@ pipeline {
     }
     stages {        
         stage('Install dependencies') {
+            options {
+              timeout(time: 3, unit: 'MINUTES')
+            }
             steps {
                 withEnv(["GOROOT=${root}", "PATH+GO=${root}/bin:${HOME}/go/bin"]) {
                     echo 'Installing dependencies'
@@ -23,6 +26,9 @@ pipeline {
             }
         }
         stage('Building the app') {
+            options {
+              timeout(time: 2, unit: 'MINUTES')
+            }
             steps {
                 withEnv(["GOROOT=${root}", "PATH+GO=${root}/bin:${HOME}/go/bin"]) {
                     echo 'Compiling and building'
@@ -31,12 +37,18 @@ pipeline {
             }
         }
         stage('Building Docker image') {
+            options {
+              timeout(time: 3, unit: 'MINUTES')
+            }
             steps {
                 echo 'Building Docker image'
                 sh 'docker build -t donatmolnar/guesspass:1.0.0 .'
             }
         }
         stage('Pushing image to dockerhub') {
+            options {
+              timeout(time: 3, unit: 'MINUTES')
+            }
             environment {
                 dockerhub = credentials('dockerhub')
             }
