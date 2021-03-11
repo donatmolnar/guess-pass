@@ -7,8 +7,8 @@ WORKDIR /usr/app
 
 COPY ./ ./
 
-RUN go get -d ./...
-RUN go build
+#RUN go get -d ./...
+#RUN go build
 
 EXPOSE 8080
 
