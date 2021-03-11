@@ -7,7 +7,7 @@ pipeline {
         CGO_ENABLED = 0
         //GOPATH = "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"
         GOROOT="${root}"
-        PATH+GO="${root}/bin"
+        //PATH+GO="${root}/bin"
         GOBIN="${root}/bin"
         GOPATH="${root}/go"
     }
