@@ -3,11 +3,11 @@ pipeline {
     environment {
         GO116MODULE = 'on'
         CGO_ENABLED = 0
-        //GOPATH = "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"
-        GOROOT="${root}"
+        GOPATH = "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"
+        //GOROOT="${root}"
         //PATH+GO="${root}/bin"
-        GOBIN="${root}/bin"
-        GOPATH="${root}/go"
+        //GOBIN="${root}/bin"
+        //GOPATH="${root}/go"
     }
     stages {        
         stage('Install dependencies') {
