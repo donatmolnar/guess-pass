@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        docker { image 'golang:1.16.0-alpine3.13' }
-    }
+    agent any
     environment {
         GO116MODULE = 'on'
         CGO_ENABLED = 0
