@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Pushing image to dockerhub') {
             environment {
-                dockerhub = credentials(dockerhub)
+                dockerhub = credentials('dockerhub')
             }
             steps {
                 echo 'Pushing to dockerhub'
