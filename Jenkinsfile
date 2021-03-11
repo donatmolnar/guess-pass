@@ -15,15 +15,19 @@ pipeline {
     stages {        
         stage('Install dependencies') {
             steps {
-                echo 'Installing dependencies'
-                sh 'go version'
-                sh 'go get -d ./...'
+                withEnv(["GOROOT=${root}", "PATH+GO=${root}/bin:${HOME}/go/bin"]) {
+                    echo 'Installing dependencies'
+                    sh 'go version'
+                    sh 'go get -d ./...'
+                }
             }
         }
         stage('Building the app') {
             steps {
-                echo 'Compiling and building'
-                sh 'go build main.go'
+                withEnv(["GOROOT=${root}", "PATH+GO=${root}/bin:${HOME}/go/bin"]) {
+                    echo 'Compiling and building'
+                    sh 'go build main.go'
+                }
             }
         }
         stage('Building Docker image') {
