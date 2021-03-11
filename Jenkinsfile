@@ -23,12 +23,12 @@ pipeline {
         stage('Building the app') {
             steps {
                 echo 'Compiling and building'
-                sh 'go build'
+                sh 'go build main.go'
             }
         }
         stage('Building Docker image') {
             steps {
-                echo 'Compiling and building'
+                echo 'Building Docker image'
                 sh 'docker build -t donatmolnar/guesspass:1.0.0 .'
             }
         }

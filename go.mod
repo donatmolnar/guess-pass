@@ -1,4 +1,4 @@
-module guess-pass
+module main
 
 go 1.16
 
