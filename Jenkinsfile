@@ -31,7 +31,7 @@ pipeline {
         //             sh 'go build main.go'
         //         //}
         //     }
-        }
+        //}
         stage('Building Docker image') {
             options {
               timeout(time: 3, unit: 'MINUTES')
