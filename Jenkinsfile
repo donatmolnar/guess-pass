@@ -8,7 +8,7 @@ pipeline {
     //     CGO_ENABLED = 0
     //     GOPATH = "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"
     // }
-    // stages {        
+    stages {        
     //     stage('Install dependencies') {
     //         options {
     //           timeout(time: 3, unit: 'MINUTES')
@@ -33,18 +33,18 @@ pipeline {
         //     }
         //}
         stage('Building Docker image') {
-            options {
-              timeout(time: 3, unit: 'MINUTES')
-            }
+            // options {
+            //   timeout(time: 3, unit: 'MINUTES')
+            // }
             steps {
                 echo 'Building Docker image'
                 sh 'docker build -t donatmolnar/guesspass:1.0.0 .'
             }
         }
         stage('Pushing image to dockerhub') {
-            options {
-              timeout(time: 3, unit: 'MINUTES')
-            }
+            // options {
+            //   timeout(time: 3, unit: 'MINUTES')
+            // }
             environment {
                 dockerhub = credentials('dockerhub')
             }
@@ -56,4 +56,5 @@ pipeline {
                 sh 'sudo docker push donatmolnar/guesspass:1.0.0'
             }
         }
+    }
 }
