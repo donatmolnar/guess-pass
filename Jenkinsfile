@@ -56,5 +56,4 @@ pipeline {
                 sh 'sudo docker push donatmolnar/guesspass:1.0.0'
             }
         }
-    }
 }
