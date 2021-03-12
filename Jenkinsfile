@@ -1,36 +1,36 @@
 pipeline {
     agent any
-    tools {
-        go 'go1.16'
-    }
-    environment {
-        GO116MODULE = 'on'
-        CGO_ENABLED = 0
-        GOPATH = "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"
-    }
-    stages {        
-        stage('Install dependencies') {
-            options {
-              timeout(time: 3, unit: 'MINUTES')
-            }
-            steps {
-                //withEnv(["GOROOT=${root}", "PATH+GO=${root}/bin:${HOME}/go/bin"]) {
-                    echo 'Installing dependencies'
-                    sh 'go version'
-                    sh 'go get -d ./...'
-                //}
-            }
-        }
-        stage('Building the app') {
-            options {
-              timeout(time: 2, unit: 'MINUTES')
-            }
-            steps {
-                //withEnv(["GOROOT=${root}", "PATH+GO=${root}/bin:${HOME}/go/bin"]) {
-                    echo 'Compiling and building'
-                    sh 'go build main.go'
-                //}
-            }
+    // tools {
+    //     go 'go1.16'
+    // }
+    // environment {
+    //     GO116MODULE = 'on'
+    //     CGO_ENABLED = 0
+    //     GOPATH = "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"
+    // }
+    // stages {        
+    //     stage('Install dependencies') {
+    //         options {
+    //           timeout(time: 3, unit: 'MINUTES')
+    //         }
+    //         steps {
+    //             //withEnv(["GOROOT=${root}", "PATH+GO=${root}/bin:${HOME}/go/bin"]) {
+    //                 echo 'Installing dependencies'
+    //                 sh 'go version'
+    //                 sh 'go get -d ./...'
+    //             //}
+    //         }
+    //     }
+        // stage('Building the app') {
+        //     options {
+        //       timeout(time: 2, unit: 'MINUTES')
+        //     }
+        //     steps {
+        //         //withEnv(["GOROOT=${root}", "PATH+GO=${root}/bin:${HOME}/go/bin"]) {
+        //             echo 'Compiling and building'
+        //             sh 'go build main.go'
+        //         //}
+        //     }
         }
         stage('Building Docker image') {
             options {
