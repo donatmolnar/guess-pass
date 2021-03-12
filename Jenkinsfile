@@ -1,7 +1,7 @@
 pipeline {
     agent any
       tools {
-          docker 'docker'
+          dockerTool 'docker'
       }
     // tools {
     //     go 'go1.16'
