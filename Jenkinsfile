@@ -53,10 +53,10 @@ pipeline {
             }
             steps {
                 echo 'Pushing to dockerhub'
-                sh 'sudo docker login'
+                sh 'docker login'
                 sh '${dockerhub_USR}'
                 sh '${dockerhub_PSW}'
-                sh 'sudo docker push donatmolnar/guesspass:1.0.0'
+                sh 'docker push donatmolnar/guesspass:1.0.0'
             }
         }
     }
